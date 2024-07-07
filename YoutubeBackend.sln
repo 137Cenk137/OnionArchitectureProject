@@ -3,6 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{071DECFF-39BA-4C4B-99B1-F5A2E58BBAD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YoutubeProject", "YoutubeProject", "{EE9922EB-9AEC-4DA3-8589-2208911F7C00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{DAEB342F-DF31-4534-9152-03D0FC7E5BD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youtube.Application", "src\YoutubeProject\Core\Youtube.Application\Youtube.Application.csproj", "{E483DBAE-BC19-4B70-8337-3DB5D6FB5D30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youtube.Domain", "src\YoutubeProject\Core\Youtube.Domain\Youtube.Domain.csproj", "{0D9EFFDD-41FF-497A-918B-43C0F67619F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6FE5C02D-F7E8-46B9-9C03-BAFB64065237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youtube.Infrastructure", "src\YoutubeProject\Infrastructure\Youtube.Infrastructure\Youtube.Infrastructure.csproj", "{34A24FC8-2DBC-4D3A-8CE2-A2199E05C8A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youtube.Persistence", "src\YoutubeProject\Infrastructure\Youtube.Persistence\Youtube.Persistence.csproj", "{12F8F528-2582-4EB8-9CD3-2FE90657ED3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3531B236-6E5D-434E-B896-C6B4153E268B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youtube.WebApi", "src\YoutubeProject\Presentation\Youtube.WebApi\Youtube.WebApi.csproj", "{1AC3CE4F-45BC-4FE7-8900-2C0909838C15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +30,38 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E483DBAE-BC19-4B70-8337-3DB5D6FB5D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E483DBAE-BC19-4B70-8337-3DB5D6FB5D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E483DBAE-BC19-4B70-8337-3DB5D6FB5D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E483DBAE-BC19-4B70-8337-3DB5D6FB5D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9EFFDD-41FF-497A-918B-43C0F67619F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9EFFDD-41FF-497A-918B-43C0F67619F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9EFFDD-41FF-497A-918B-43C0F67619F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9EFFDD-41FF-497A-918B-43C0F67619F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A24FC8-2DBC-4D3A-8CE2-A2199E05C8A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A24FC8-2DBC-4D3A-8CE2-A2199E05C8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A24FC8-2DBC-4D3A-8CE2-A2199E05C8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A24FC8-2DBC-4D3A-8CE2-A2199E05C8A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12F8F528-2582-4EB8-9CD3-2FE90657ED3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12F8F528-2582-4EB8-9CD3-2FE90657ED3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12F8F528-2582-4EB8-9CD3-2FE90657ED3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12F8F528-2582-4EB8-9CD3-2FE90657ED3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AC3CE4F-45BC-4FE7-8900-2C0909838C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC3CE4F-45BC-4FE7-8900-2C0909838C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC3CE4F-45BC-4FE7-8900-2C0909838C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC3CE4F-45BC-4FE7-8900-2C0909838C15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE9922EB-9AEC-4DA3-8589-2208911F7C00} = {071DECFF-39BA-4C4B-99B1-F5A2E58BBAD8}
+		{DAEB342F-DF31-4534-9152-03D0FC7E5BD5} = {EE9922EB-9AEC-4DA3-8589-2208911F7C00}
+		{E483DBAE-BC19-4B70-8337-3DB5D6FB5D30} = {DAEB342F-DF31-4534-9152-03D0FC7E5BD5}
+		{0D9EFFDD-41FF-497A-918B-43C0F67619F2} = {DAEB342F-DF31-4534-9152-03D0FC7E5BD5}
+		{6FE5C02D-F7E8-46B9-9C03-BAFB64065237} = {EE9922EB-9AEC-4DA3-8589-2208911F7C00}
+		{34A24FC8-2DBC-4D3A-8CE2-A2199E05C8A8} = {6FE5C02D-F7E8-46B9-9C03-BAFB64065237}
+		{12F8F528-2582-4EB8-9CD3-2FE90657ED3E} = {6FE5C02D-F7E8-46B9-9C03-BAFB64065237}
+		{3531B236-6E5D-434E-B896-C6B4153E268B} = {EE9922EB-9AEC-4DA3-8589-2208911F7C00}
+		{1AC3CE4F-45BC-4FE7-8900-2C0909838C15} = {3531B236-6E5D-434E-B896-C6B4153E268B}
 	EndGlobalSection
 EndGlobal
