@@ -15,14 +15,16 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
     }
 
     private DbSet<T> Table {get => _dbContext.Set<T>();}
-    public Task<T> CoutnAsync(Expression<Func<T, bool>>? predicate = null)
+    public async Task<int> CoutnAsync(Expression<Func<T, bool>>? predicate = null)
     {
-        throw new NotImplementedException();
+        Table.AsNoTracking();
+        return await Table.Where(predicate).CountAsync();
     }
 
-    public Task<T> Find(Expression<Func<T, bool>> predicate)
+    public async Task<T> Find(Expression<Func<T, bool>> predicate,bool enableTracking = false)
     {
-        throw new NotImplementedException();
+        if(!enableTracking){Table.AsNoTracking();}
+        return await Table.FindAsync(predicate);
     }
 
     public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
@@ -47,13 +49,14 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
 
         return await queryable.Skip((currentPage-1) * pageSize).Take(pageSize).ToListAsync();    }
 
-    public  async Task<IList<T>> GetAsync(Expression<Func<T, bool>> predicate , Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
+    public  async Task<T> GetAsync(Expression<Func<T, bool>> predicate , Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
     {
          IQueryable<T> queryable = Table;
         if(!enableTracking){queryable.AsNoTracking();}
         if(include is not null){queryable = include(queryable);}
-        if (predicate is not null){queryable = queryable.Where(predicate);}
+        //queryable.Where(predicate);
 
 
-        return await queryable.ToListAsync();    }
+        return await queryable.FirstOrDefaultAsync();   
+    }
 }

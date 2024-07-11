@@ -15,11 +15,11 @@ public interface IReadRepository<T>  where  T : class , IEntityBase,new()
                                 Func<IQueryable<T>,IIncludableQueryable<T,object>>? include = null,
                                 Func<IQueryable<T>,IOrderedQueryable<T>>? orderBy = null,
                                 bool enableTracking = false,int currentPage = 1, int pageSize = 3);
-     Task<IList<T>> GetAsync(Expression<Func<T,bool>> predicate,
+     Task<T> GetAsync(Expression<Func<T,bool>> predicate,
                                 Func<IQueryable<T>,IIncludableQueryable<T,object>>? include = null,
                                 bool enableTracking = false);
-     Task<T> Find(Expression<Func<T,bool>> predicate);
-     Task<T> CoutnAsync(Expression<Func<T,bool>>? predicate = null);
+     Task<T> Find(Expression<Func<T,bool>> predicate,bool enableTracking = false);
+     Task<int> CoutnAsync(Expression<Func<T,bool>>? predicate = null);
 
 }
 
