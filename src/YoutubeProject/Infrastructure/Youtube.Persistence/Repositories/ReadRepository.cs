@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Query;
 using Youtube.Application.Interfaces.Repositories;
 using Youtube.Domain.Common;
 
-namespace Youtube.Persistence.Repositories;
+namespace Youtube.Persistence.Repositories;//unitofwork yapısı herhangi bir verinin bozuk olması durumunda veya işte herhangi birinin eksik olması durumunda sizin veri tabanınızda uyumsuzluklar olacaktır işte eksikleri girmiş olursunuz veya işte veri girmeye çalışmış ama bozmu olursunuz vesaire böyle bir durumdan bizi Kurtarmak amacıyla Aslında biz bu durumda nit of work yapısını kullanıyoruz
 //bizim projemizde tüm katmamlarda kullanacagimiz bu classlar tek bir yerden yonelitiliyor olacak 
 public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase, new()
 {
@@ -21,17 +21,19 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
         return await Table.Where(predicate).CountAsync();
     }
 
-    public async Task<T> Find(Expression<Func<T, bool>> predicate,bool enableTracking = false)
+    public  IQueryable<T> Find(Expression<Func<T, bool>> predicate,bool enableTracking = false)
     {
         if(!enableTracking){Table.AsNoTracking();}
-        return await Table.FindAsync(predicate);
+        return  Table.Where(predicate);
     }
 
     public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
     {
         IQueryable<T> queryable = Table;
-        if(!enableTracking){queryable.AsNoTracking();}
+        if(include is not null && enableTracking){queryable.AsNoTrackingWithIdentityResolution();}
+        else if(!enableTracking){queryable.AsNoTracking();}
         if(include is not null){queryable = include(queryable);}
+        //if(include is not null && enableTracking){queryable.AsNoTrackingWithIdentityResolution();}
         if (predicate is not null){queryable = queryable.Where(predicate);}
         if (orderBy is not null){return await orderBy(queryable).ToListAsync();}
 
@@ -54,7 +56,7 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
          IQueryable<T> queryable = Table;
         if(!enableTracking){queryable.AsNoTracking();}
         if(include is not null){queryable = include(queryable);}
-        //queryable.Where(predicate);
+        queryable = queryable.Where(predicate);
 
 
         return await queryable.FirstOrDefaultAsync();   

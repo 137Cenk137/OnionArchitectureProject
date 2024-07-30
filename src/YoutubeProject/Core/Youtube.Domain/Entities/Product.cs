@@ -17,15 +17,15 @@ public class Product : EntityBase
         Discount = discount;
         BrandId = brandId;
     }
-    public required string Title { get; set; }
-    public required string Description { get; set; }
-    public required int BrandId { get; set; }
+    public  string Title { get; set; }
+    public  string Description { get; set; }
+    public  int BrandId { get; set; }
     public decimal Price { get; set; }
     public decimal Discount { get; set; }
 
 
     public Brand Brand { get; set; }
 
-    public ICollection<Category> MyProperty { get; set; }
+    public ICollection<ProductCategory> Categories { get; set; } 
     //public string ImagePath { get; set; }
 }

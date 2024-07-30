@@ -20,10 +20,10 @@ public class UnitOfWork : IUnitOfWork
     public int Save() => _appDbContext.SaveChanges();
    
 
-    public async Task<int> SaveAsync() => await _appDbContext.SaveChangesAsync();
+    public async Task<int> SaveChangesAsync() => await _appDbContext.SaveChangesAsync();
     
 
-    IReadRepository<T> IUnitOfWork.GetReadRepository<T>() => new ReadRepository<T>(_appDbContext);
+    IReadRepository<T> IUnitOfWork.GetReadRepository<T>() => new ReadRepository<T>(_appDbContext) ;
   
 
     IWriteRepository<T> IUnitOfWork.GetWriteRepository<T>() => new WriteRepository<T>(_appDbContext);

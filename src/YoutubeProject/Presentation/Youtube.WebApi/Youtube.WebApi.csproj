@@ -14,9 +14,11 @@
 </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\Youtube.Persistence\Youtube.Persistence.csproj" />
-  </ItemGroup>
+    <ProjectReference Include="..\..\Core\Youtube.Mapper\Youtube.Mapper.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Youtube.Infrastructure\Youtube.Infrastructure.csproj" />
+  </ItemGroup> 
 
 </Project>

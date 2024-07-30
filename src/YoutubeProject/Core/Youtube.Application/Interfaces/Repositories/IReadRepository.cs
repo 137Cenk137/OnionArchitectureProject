@@ -18,7 +18,7 @@ public interface IReadRepository<T>  where  T : class , IEntityBase,new()
      Task<T> GetAsync(Expression<Func<T,bool>> predicate,
                                 Func<IQueryable<T>,IIncludableQueryable<T,object>>? include = null,
                                 bool enableTracking = false);
-     Task<T> Find(Expression<Func<T,bool>> predicate,bool enableTracking = false);
+     IQueryable<T> Find(Expression<Func<T,bool>> predicate,bool enableTracking = false);
      Task<int> CoutnAsync(Expression<Func<T,bool>>? predicate = null);
 
 }
